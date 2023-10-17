@@ -1,5 +1,7 @@
 # NodeJS MongoDB API
 
+This is a basic Express.js application that serves as a template for building a RESTful API with MongoDB integration. The application provides endpoints for managing artists and albums. It also includes middleware for logging, handling CORS policy, and parsing requests as JSON.
+
 ## Application Structure
 
 The application consists of two main files:
