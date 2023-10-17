@@ -116,7 +116,9 @@ exports.deleteAlbum = async (req, res) => {
         // If there's an error, send a failure response with an error message
         res.status(400).json({
             success: "fail", // Status is "fail"
-            message, // The error message
+            message: error.message // The error message
         });
     }
 };
+
+
