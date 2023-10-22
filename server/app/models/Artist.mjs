@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 // Define a Mongoose schema for the 'Artist' model
 const artistSchema = new mongoose.Schema({
-	_id: mongoose.Schema.Types.ObjectId, // Make sure _id is set as a unique identifier
+	// _id: mongoose.Schema.Types.ObjectId, // Make sure _id is set as a unique identifier
 	name: {
 		type: String, // Define the data type for the 'name' field as a string
 		required: [true, "Please add the artist's name"], // Require a non-empty value for 'name' with a custom error message

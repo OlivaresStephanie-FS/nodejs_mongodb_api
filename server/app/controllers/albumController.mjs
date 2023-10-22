@@ -100,12 +100,24 @@ export const updateAlbum = asyncHandler(async (req, res) => {
   // Extract the "id" parameter from the request URL
   const { id } = req.params;
 
+  // Retrieve the "artist" data from the request body
+  const { artist, ...updateData } = req.body;
+
   // Use the "findByIdAndUpdate" method to update an album by its ID
   // It uses the request body for the update data and sets options like "new" and "runValidators"
-  const album = await Album.findByIdAndUpdate(id, req.body, {
+  const album = await Album.findByIdAndUpdate(id, updateData, {
     new: true, // Return the updated document
     runValidators: true, // Run model validation
   });
+
+  // Ensure the album has a valid _id field
+  album._id = id;  // Assign the id from the request to the _id field
+
+  // Update the "artist" property on the updated album
+  album.artist = artist;
+
+  // Save the updated album
+  await album.save();
 
   // Send a success response with the updated album data and a status message
   res.status(200).json({
@@ -114,6 +126,7 @@ export const updateAlbum = asyncHandler(async (req, res) => {
     message: `${req.method} - Album request made.`, // Message indicating the HTTP method used
   });
 });
+
 
 // Function to delete an album by its ID
 export const deleteAlbum = asyncHandler(async (req, res) => {
