@@ -3,7 +3,7 @@ import { useState } from "react";
 const SearchBar = ({ onSubmit }) => {
 	const [term, setTerm] = useState("");
 
-	const handleChange = (event) => {
+	const handleSearch = (event) => {
 		console.log("event.target.value:", event.target.value);
 		setTerm(event.target.value);
 	};
@@ -17,7 +17,7 @@ const SearchBar = ({ onSubmit }) => {
 					id="search"
 					name="search"
 					value={term}
-					onChange={handleChange}
+					onChange={handleSearch}
 				/>
 
 				{term.length < 3 && (
